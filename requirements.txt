@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+PySide6
+requests

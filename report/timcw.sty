@@ -1,0 +1,120 @@
+% Teacher-layout-compatible adaptation for XeLaTeX.
+% Based on kalitvin/tim_coursework_template, XeLaTeX/timcw.cls and timcw.sty.
+% University methodological requirements take precedence for print margins and pagination.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{timcw}[2026/11/09 v17 Teacher-style layout adaptation]
+\RequirePackage[english,russian]{babel}
+\RequirePackage{fontspec}
+\RequirePackage[left=25mm,right=10mm,top=20mm,bottom=20mm]{geometry}
+\RequirePackage{setspace}
+\RequirePackage{indentfirst}
+\RequirePackage{graphicx}
+\RequirePackage{titlesec}
+\RequirePackage{tocloft}
+\RequirePackage{caption}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{float}
+\RequirePackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\RequirePackage{url}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+
+% PT Serif is the typeface in Kalitvin's XeLaTeX sample.
+\setmainfont{PT Serif}
+\setsansfont{PT Sans}
+\IfFontExistsTF{PT Mono}{\setmonofont{PT Mono}}{\setmonofont{Liberation Mono}}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{17pt}
+\emergencystretch=2em
+\clubpenalty=10000
+\widowpenalty=10000
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\chaptername}{Глава}
+\titleformat{\chapter}[hang]{\fontsize{16pt}{19pt}\bfseries\centering}{Глава \thechapter.}{0.65em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{15pt}
+\titleformat{\section}[hang]{\fontsize{14pt}{18pt}\bfseries\centering}{\thesection}{0.6em}{}
+\titlespacing*{\section}{0pt}{13pt}{6pt}
+\titleformat{\subsection}[hang]{\fontsize{14pt}{18pt}\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{11pt}{5pt}
+\addto\captionsrussian{\renewcommand{\contentsname}{Содержание}}
+\renewcommand{\cfttoctitlefont}{\fontsize{16pt}{19pt}\bfseries\hfill}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftchappresnum}{Глава~}
+\renewcommand{\cftchapaftersnum}{.\ }
+\setlength{\cftchapnumwidth}{24mm}
+\captionsetup[figure]{name=Рисунок,font=small,labelsep=period,justification=centering}
+\captionsetup[table]{font=small,labelsep=period,justification=raggedright,singlelinecheck=false}
+\renewcommand{\figurename}{Рисунок}
+\makeatletter\renewcommand\@biblabel[1]{#1.}\makeatother
+\hypersetup{pdftitle={Приложение для составления и синхронизации списков дел},pdfauthor={Галеев Султан Азатович}}
+
+\newcommand{\cwtitle}[2]{%
+  \begin{singlespacing}%
+  \thispagestyle{empty}%
+  \noindent
+  \begin{minipage}[c]{0.12\textwidth}
+    \includegraphics[width=0.96\linewidth]{tim-logo.png}%
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.85\textwidth}
+    \scriptsize\centering
+    \textbf{МИНИСТЕРСТВО СЕЛЬСКОГО ХОЗЯЙСТВА РОССИЙСКОЙ ФЕДЕРАЦИИ}\\[0.18cm]
+    ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ\\
+    УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ\\[0.18cm]
+    \textbf{«РОССИЙСКИЙ ГОСУДАРСТВЕННЫЙ АГРАРНЫЙ УНИВЕРСИТЕТ -\\
+    МСХА имени К.\,А.~ТИМИРЯЗЕВА»}\\[0.18cm]
+    \textbf{(ФГБОУ ВО РГАУ-МСХА имени К.\,А.~Тимирязева)}\par
+  \end{minipage}%
+  \par\vspace{5mm}
+  \noindent\rule{\textwidth}{0.4pt}\par\vspace{-2.2mm}
+  \noindent\rule{\textwidth}{0.4pt}\par
+  \begin{center}
+  {\small Институт экономики и управления АПК\\[1mm]
+  Кафедра статистики и кибернетики\\[4mm]
+  Направление: 09.03.02 Информационные системы и технологии\\
+  Направленность: Большие данные и машинное обучение}\par
+  \vspace{7mm}
+  {\fontsize{16pt}{19pt}\bfseries КУРСОВОЙ ПРОЕКТ}\par
+  \end{center}
+  \vspace{5mm}
+  {\raggedright\noindent на тему: «#1».\par}
+  \vspace{8mm}
+  \noindent\hfill
+  \begin{minipage}[t]{0.55\textwidth}\small\raggedright
+  Выполнил:\\
+  студент 2 курса группы ДЭ 21-25\\
+  #2\\[4mm]
+  Дата регистрации КП\\[2mm]
+  на кафедре: \rule{35mm}{0.4pt}\\[3mm]
+  Допущен к защите\\[2mm]
+  Руководитель:\\[2mm]
+  \rule{\linewidth}{0.4pt}\\[-1mm]
+  {\footnotesize учёная степень, учёное звание, ФИО}\\[4mm]
+  Члены комиссии:\\[2mm]
+  \rule{0.72\linewidth}{0.4pt}\hfill\rule{0.24\linewidth}{0.4pt}\\[-1mm]
+  {\footnotesize учёная степень, учёное звание, ФИО \hfill подпись}\\[2mm]
+  \rule{0.72\linewidth}{0.4pt}\hfill\rule{0.24\linewidth}{0.4pt}\\[-1mm]
+  {\footnotesize учёная степень, учёное звание, ФИО \hfill подпись}\\[2mm]
+  \rule{0.72\linewidth}{0.4pt}\hfill\rule{0.24\linewidth}{0.4pt}\\[-1mm]
+  {\footnotesize учёная степень, учёное звание, ФИО \hfill подпись}\\[4mm]
+  Оценка \hrulefill\\[3mm]
+  Дата защиты \hrulefill
+  \end{minipage}\par
+  \vfill
+  \begin{center}Москва 2026\end{center}
+  \end{singlespacing}
+  \clearpage
+}
+\newcommand{\intro}{\chapter*{Введение}\phantomsection\addcontentsline{toc}{chapter}{Введение}}
+\newcommand{\conclusion}{\chapter*{Заключение}\phantomsection\addcontentsline{toc}{chapter}{Заключение}}
+\newcommand{\applications}{\chapter*{Приложения}\phantomsection\addcontentsline{toc}{chapter}{Приложения}}

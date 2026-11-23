@@ -1,5 +1,6 @@
 """Сервер общего списка дел. Запуск: python -m uvicorn server:app --port 8000"""
 
+import os
 import sqlite3
 from pathlib import Path
 
@@ -7,7 +8,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI(title="Общий список дел")
-DB = Path(__file__).with_name("tasks.db")
+DB = Path(os.environ.get("TODO_DB", str(Path(__file__).with_name("tasks.db"))))
 
 
 class Task(BaseModel):

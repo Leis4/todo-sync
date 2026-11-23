@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+tasks.db
+*.db
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/build*.log

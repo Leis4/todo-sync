@@ -1,4 +1,4 @@
-"""Окно списка дел. На втором ПК укажите адрес сервера в аргументе."""
+"""Окно списка задач предприятия АПК. На втором ПК укажите адрес сервера в аргументе."""
 
 import sys
 import requests
@@ -16,7 +16,7 @@ class Window(QWidget):
         self.setObjectName("root")
         self.address = address.rstrip("/")
         self.tasks = []
-        self.setWindowTitle("Общий список дел")
+        self.setWindowTitle("Общий список задач — предприятие АПК")
         self.resize(780, 530)
         self.setStyleSheet("""
             QWidget {color:#26384b; font:12px 'Segoe UI';}
@@ -61,7 +61,7 @@ class Window(QWidget):
         layout = QVBoxLayout(tasks_page)
         layout.setContentsMargins(16, 15, 16, 14)
         layout.setSpacing(9)
-        heading = QLabel("Мои задачи")
+        heading = QLabel("Задачи предприятия")
         heading.setObjectName("heading")
         layout.addWidget(heading)
 
@@ -107,7 +107,7 @@ class Window(QWidget):
         title = QLabel("Статистика задач")
         title.setObjectName("heading")
         stats_layout.addWidget(title)
-        subtitle = QLabel("Состояние общего списка на данный момент")
+        subtitle = QLabel("Состояние общего списка задач предприятия")
         subtitle.setObjectName("muted")
         stats_layout.addWidget(subtitle)
 
@@ -144,7 +144,7 @@ class Window(QWidget):
         stats_layout.addStretch()
         tabs.addTab(stats_page, "Статистика")
 
-        about = QLabel("Общий список дел для двух компьютеров.\n\n"
+        about = QLabel("Общий список задач для двух рабочих мест предприятия АПК.\n\n"
                        "Задачи хранятся в SQLite на сервере FastAPI.\n"
                        "Оба клиента обновляются каждые 2 секунды.\n\n"
                        f"Адрес сервера: {self.address}")
